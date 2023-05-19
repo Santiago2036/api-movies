@@ -1,0 +1,52 @@
+
+
+<div class=" col-md-4 card-body d-flex d">
+<div class="div card text-center">
+<form class="m-4">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input [(ngModel)]="actor.name" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="exampleInputTitle" aria-describedby="name">
+    <div id="title" class="form-text">Actor name</div>
+  </div>
+  <div class="mb-3">
+    <label for="lastname" class="form-label">Last name</label>
+    <input [(ngModel)]="actor.last_name" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="exampleInputTitle" aria-describedby="lastname">
+    <div id="title" class="form-text">Actor last name</div>
+  </div>
+  <div class="mb-3">
+    <label for="age" class="form-label">Age</label>
+    <input  [(ngModel)]="actor.age" [ngModelOptions]="{standalone: true}" type="number" class="form-control" id="age">
+  </div>
+
+  <div class="mb-3">
+    <label for="imagen" class="form-label">Imagen</label>
+    <input [(ngModel)]="actor.imagen" type="text" [ngModelOptions]="{standalone: true}" class="form-control" id="imagen">
+  </div>
+
+
+  <div *ngIf="validator['id'];then update;else save"></div>
+  <ng-template #update>
+    <button class="btn btn-success" (click)="edit ? handleUpdate():handleCreate()">UPDATE</button>
+  </ng-template>
+  <ng-template #save>
+    <button class="btn btn-success" (click)="edit ? handleUpdate(): handleCreate()">SAVE</button>
+  </ng-template>
+</form>
+</div>
+</div>
+
+<div class="col-md-4">
+  <div class=" card text-center">
+    <img src={{actor.imagen}} alt="imagen-actor" class="card-img-top"/>
+    <div class="card-header">
+      <p>{{actor.name}}</p>
+      <p>{{actor.last_name}}</p>
+    </div>
+    <div class="card-body">
+      {{actor.age}}
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,81 @@
+<div class=" col-md-4 card-body d-flex d">
+  <div class="col-md-10 div card text-center">
+  <form class="m-4">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input [(ngModel)]="movie.name" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="exampleInputTitle" aria-describedby="name">
+      <div id="title" class="form-text">Movie name</div>
+    </div>
+    <div class="mb-3">
+      <label for="gender" class="form-label">Gender</label>
+      <input [(ngModel)]="movie.gender" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="exampleInputTitle" aria-describedby="gender">
+      <div id="title" class="form-text">gender</div>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input [(ngModel)]="movie.description" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="exampleInputTitle" aria-describedby="description">
+      <div id="title" class="form-text">Description</div>
+    </div>
+    <div class="mb-3">
+      <label for="year" class="form-label">Year</label>
+      <input  [(ngModel)]="movie.year" [ngModelOptions]="{standalone: true}" type="number" class="form-control" id="year">
+    </div>
+
+    <div class="mb-3">
+      <label for="imagen" class="form-label">Imagen</label>
+      <input [(ngModel)]="movie.imagen" type="text" [ngModelOptions]="{standalone: true}" class="form-control" id="imagen">
+    </div>
+
+
+    <div *ngIf="validator['id'];then update;else save"></div>
+    <ng-template #update>
+      <button class="btn btn-success" (click)="edit ? handleUpdate():handleCreate()">UPDATE</button>
+    </ng-template>
+    <ng-template #save>
+      <button class="btn btn-success" (click)="edit ? handleUpdate(): handleCreate();validateActors()">SAVE</button>
+    </ng-template>
+  </form>
+  </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class=" card text-center bg-info">
+      <h6>¿Que actores participaron en la pelicula?</h6>
+      <div *ngFor="let actor of actorsMenu" class=" card text-center">
+        <button class="btn btn-light" (click)="handleActor(actor)" >
+          <h6> Name: {{actor.name}}</h6>
+          <h6> Last Name: {{actor.last_name}}</h6>
+          <h6> Age:  {{actor.age}}</h6>
+
+        </button>
+      </div>
+    </div>
+    </div>
+
+
+  <div class="col-md-4">
+    <h6>Previsualizacion</h6>
+    <div class=" card text-center">
+      <img src={{movie.imagen}} alt="imagen-movie" class="card-img-top"/>
+      <div class="card-header">
+        <p>{{movie.name}}</p>
+        <p>{{movie.description}}</p>
+      </div>
+      <div class="card-body">
+        {{movie.year}}
+      </div>
+    </div>
+  </div>
+
+  <div class=" mt-4 col-md-12 align-items-center">
+    <div class=" card text-center bg-info">
+      <h6>Se agregaran los siguientes actores a la pelicula</h6>
+      <div *ngFor="let actor of actors" class=" card text-center">
+        <button class="btn btn-light" (click)="handleActor(actor)" >
+          <h6> Name: {{actor.name}}</h6>
+          <h6> Last Name: {{actor.last_name}}</h6>
+          <h6> Age:  {{actor.age}}</h6>
+        </button>
+  </div>
+
+
